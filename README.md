@@ -1,11 +1,19 @@
 Demo project for online wallet using:
+1. Java 22
+2. Spring Boot
+3. Spring Data JPA
+4. Spring Retry
+5. Gradle
+6. MySQL
 
-Java 22
-Spring Boot
-Spring Data JPA
-Spring Retry
-Gradle
-MySQL
+Endpoints provided:
+1. GET Get Account by ID: /account/{id}
+2. GET Get Account Balance by ID: /account/{id}/balance
+3. POST Create Account: /account
+4. GET Get all Transactions related to a given Account: /account/{id}/transactions
+5. GET Get all outgoing Transactions from a given Account: /account/{id}/transactions/out
+6. GET Get all incoming Transactions into a given Account: /account/{id}/transactions/in
+7. POST Create Transaction: /transaction
 
 How to test:
 1. Create the test database tables and import the data (configuration assumes schema is named wallet)
