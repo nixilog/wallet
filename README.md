@@ -23,10 +23,10 @@ How to test:
 Expected data after running tests:
 1. account table<br>
 a. id 3 to 6 have updated balance and version values<br>
-b. new record "new_client_<timestamp>" created by account creation<br>
-c. new record "non-existent_destination_<timestamp>" created by transaction with non-existent destination<br>
-d. new record "non-existent_source_<timestamp>" created by transaction with non-existent source<br>
-e. new records "non-existent_source_<timestamp>" and "non-existent_destination_<timestamp>" created by transaction with non-existent source and destination<br>
+b. new record "new_client_{timestamp}" created by account creation<br>
+c. new record "non-existent_destination_{timestamp}" created by transaction with non-existent destination<br>
+d. new record "non-existent_source_{timestamp}" created by transaction with non-existent source<br>
+e. new records "non-existent_source_{timestamp}" and "non-existent_destination_{timestamp}" created by transaction with non-existent source and destination<br>
 f. new records "lock_test_source" and "lock_test_destination" created by lock test with balance of -100000 and 100000 respectively, and version of 100<br>
 2. transaction table<br>
 a. new record from source_id 3 to destination_id 4<br>
