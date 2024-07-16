@@ -16,11 +16,26 @@ Endpoints provided:
 7. POST Create Transaction: /transaction
 
 How to test:
-1. Create the test database tables and import the data (configuration assumes schema is named wallet)
+1. Create the test database tables and import the data (update application.properties for the configuration as necessary)
 3. Use the gradle wrapper to build and run tests: gradlew build
 4. Use the gradle wrapper to deploy: gradlew bootJar
 
-Some curl POST commands:
+Expected data after running tests:
+1. account table
+  a. id 3 to 6 have updated balance and version values
+  b. new record "new_client_<timestamp>" created by account creation
+  c. new record "non-existent_destination_<timestamp>" created by transaction with non-existent destination
+  d. new record "non-existent_source_<timestamp>" created by transaction with non-existent source 
+  e. new records "non-existent_source_<timestamp>" and "non-existent_destination_<timestamp>" created by transaction with non-existent source and destination
+  f. new records "lock_test_source" and "lock_test_destination" created by lock test with balance of -100000 and 100000 respectively, and version of 100
+2. transaction table
+  a. new record from source_id 3 to destination_id 4
+  b. new record from source_id 6 to non-existent destination <generated id>
+  c. new record from non-existent source <generated id> to destination_id 5
+  d. new record from non-existent source <generated id> to non-existent destination <generated id>
+  e. 100 new records with source "lock_test_source" and destination "lock_test_destination" with amount of 1000
+
+Some curl POST commands (for cmd; Powershell may need different formatting):
 1. Account creation:
 curl -H "Content-Type: application/json" -X POST http://localhost:8080/account -d "{ """accountName""": """curl_test""", """balance""": 100000.00 }"
 2. Transaction creation for existing accounts (replace account ids accordingly):
