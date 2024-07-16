@@ -22,15 +22,15 @@ public class AccountController {
 
     // Endpoint to get an account using the account id
     @GetMapping("/account/{id}")
-	public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
-		Account account = accountService.getAccountById(id);
+    public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
+        Account account = accountService.getAccountById(id);
         return new ResponseEntity<>(account, HttpStatus.OK);
-	}
+    }
 
     // Endpoint to get an account's balance using the account id
     @GetMapping("/account/{id}/balance")
     public ResponseEntity<BigDecimal> getAccountBalanceById(@PathVariable Long id) {
-		Account account = accountService.getAccountById(id);
+        Account account = accountService.getAccountById(id);
         return new ResponseEntity<>(account.getBalance(), HttpStatus.OK);
     }
 
@@ -38,6 +38,6 @@ public class AccountController {
     @PostMapping("/account")
     public ResponseEntity<Account> createAccount(@RequestBody Account account) {
         return new ResponseEntity<>(accountService.createAccount(account), HttpStatus.OK);
-	}
+    }
 
 }

@@ -18,10 +18,10 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long sourceId;
-	private String source;
+    private String source;
     private Long destinationId;
     private String destination;
-	private BigDecimal amount;
+    private BigDecimal amount;
     private LocalDateTime timestamp;
     @Version
     private Integer version;

@@ -20,30 +20,30 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-	// Endpoint to get all transactions related to a given account using the account id
+    // Endpoint to get all transactions related to a given account using the account id
     @GetMapping("/account/{id}/transactions")
-	public ResponseEntity<List<Transaction>> getAllTransactionsByAccountId(@PathVariable Long id) {
-		List<Transaction> transactions = transactionService.getAllTransactionsByAccountId(id);
+    public ResponseEntity<List<Transaction>> getAllTransactionsByAccountId(@PathVariable Long id) {
+        List<Transaction> transactions = transactionService.getAllTransactionsByAccountId(id);
         return new ResponseEntity<>(transactions, HttpStatus.OK);
-	}
+    }
 
-	// Endpoint to get all outgoing transactions from a given account using the account id
+    // Endpoint to get all outgoing transactions from a given account using the account id
     @GetMapping("/account/{id}/transactions/out")
-	public ResponseEntity<List<Transaction>> getOutgoingTransactionsByAccountId(@PathVariable Long id) {
-		List<Transaction> transactions = transactionService.getOutgoingTransactionsByAccountId(id);
+    public ResponseEntity<List<Transaction>> getOutgoingTransactionsByAccountId(@PathVariable Long id) {
+        List<Transaction> transactions = transactionService.getOutgoingTransactionsByAccountId(id);
         return new ResponseEntity<>(transactions, HttpStatus.OK);
-	}
+    }
 
-	// Endpoint to get all incoming transactions into a given account using the account id
+    // Endpoint to get all incoming transactions into a given account using the account id
     @GetMapping("/account/{id}/transactions/in")
-	public ResponseEntity<List<Transaction>> getIncomingTransactionsByAccountId(@PathVariable Long id) {
-		List<Transaction> transactions = transactionService.getIncomingTransactionsByAccountId(id);
+    public ResponseEntity<List<Transaction>> getIncomingTransactionsByAccountId(@PathVariable Long id) {
+        List<Transaction> transactions = transactionService.getIncomingTransactionsByAccountId(id);
         return new ResponseEntity<>(transactions, HttpStatus.OK);
-	}
+    }
 
-	// Endpoint to create a transaction
-	@PostMapping("/transaction")
-	public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
-		return new ResponseEntity<>(transactionService.createTransaction(transaction), HttpStatus.OK);
-	}
+    // Endpoint to create a transaction
+    @PostMapping("/transaction")
+    public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
+        return new ResponseEntity<>(transactionService.createTransaction(transaction), HttpStatus.OK);
+    }
 }
